@@ -115,7 +115,7 @@
         <h1>Participe e Construa o Futuro da Educação! 🚀</h1>
     </div>
 
-    <h1>Gráfico - Área de Atuação dos Participantes</h1>
+    <h1>Gráfico - Maior Dificuldade ao trabalhar com Dados em Sala de Aula</h1>
 
     <!-- Container do gráfico -->
     <div id="main"></div>
@@ -136,7 +136,7 @@
                 .then(response => response.json())
                 .then(data => {
                     // Extraindo as áreas de atuação
-                    var rawData = data.map(item => item.area_atuacao);
+                    var rawData = data.map(item => item.dificuldade);
 
                     // Contagem das incidências
                     var contagemIncidencias = contarIncidencias(rawData);

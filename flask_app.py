@@ -15,7 +15,7 @@ CSV_FILE = os.path.join(BASE_DIR, 'dados', 'dados_educacao.csv')
 if not os.path.exists(CSV_FILE):
     os.makedirs(os.path.dirname(CSV_FILE), exist_ok=True)
     with open(CSV_FILE, 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['data', 'hora', 'area_atuacao', 'ferramentas_digitais', 'importancia_dados', 'desafios_dados', 'inovacao_tecnologica']
+        fieldnames = ['data', 'hora', 'uso_dados', 'dificuldade', 'tema_relevante']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
 
@@ -32,7 +32,7 @@ def receber_dados():
     data = request.json
 
     # Verificar se todos os campos necessários estão presentes no JSON
-    required_fields = ['area_atuacao', 'ferramentas_digitais', 'importancia_dados', 'desafios_dados', 'inovacao_tecnologica']
+    required_fields = ['uso_dados', 'dificuldade', 'tema_relevante']
     if not all(field in data for field in required_fields):
         return jsonify({"error": "Faltam campos obrigatórios"}), 400
 
@@ -46,7 +46,7 @@ def receber_dados():
 
     # Adicionar os dados ao CSV
     with open(CSV_FILE, 'a', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['data', 'hora', 'area_atuacao', 'ferramentas_digitais', 'importancia_dados', 'desafios_dados', 'inovacao_tecnologica']
+        fieldnames = ['data', 'hora', 'uso_dados', 'dificuldade', 'tema_relevante']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writerow(data)
 
@@ -76,6 +76,7 @@ def obter_dados():
 
     return jsonify(dados), 200
 
+'''
 # Endpoint para exibir o dashboard
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
@@ -83,11 +84,9 @@ def dashboard():
     dados = {
         "data": [],
         "hora": [],
-        "area_atuacao": [],
-        "ferramentas_digitais": [],
-        "importancia_dados": [],
-        "desafios_dados": [],
-        "inovacao_tecnologica": []
+        "uso_dados": [],
+        "dificuldade": [],
+        "tema_relevante": []
     }
 
     with open(CSV_FILE, 'r', encoding='utf-8') as csvfile:
@@ -95,11 +94,9 @@ def dashboard():
         for row in reader:
             dados["data"].append(row['data'])
             dados["hora"].append(row['hora'])
-            dados["area_atuacao"].append(row['area_atuacao'])
-            dados["ferramentas_digitais"].extend(row['ferramentas_digitais'].strip('][').split(', '))
-            dados["importancia_dados"].append(row['importancia_dados'])
-            dados["desafios_dados"].append(row['desafios_dados'])
-            dados["inovacao_tecnologica"].append(row['inovacao_tecnologica'])
+            dados["uso_dados"].append(row['uso_dados'])
+            dados["dificuldade"].append(row['dificuldade'])
+            dados["tema_relevante"].append(row['tema_relevante'])
 
     # Renderizar o template com os dados
     return render_template('dashboard.html', dados=dados)
@@ -108,6 +105,7 @@ def dashboard():
 @app.route('/dashboard-echart')
 def dashboard_echart():
     return render_template('dashboard-echart.html')
+'''
 
 # Endpoint para o dashboard com ECharts
 @app.route('/dashboard-epie')
