@@ -113,9 +113,9 @@ def dashboard_pie():
     return render_template('dashboard-epie.html')
 
 # Endpoint para o dashboard com ECharts
-@app.route('/dashboard-pictogram')
+@app.route('/dashboard')
 def dashboard_pictogram():
-    return render_template('dashboard-pictogram.html')
+    return render_template('dashboard.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
