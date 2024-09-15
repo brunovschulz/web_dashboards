@@ -105,12 +105,12 @@ def dashboard():
 @app.route('/dashboard-echart')
 def dashboard_echart():
     return render_template('dashboard-echart.html')
-'''
 
 # Endpoint para o dashboard com ECharts
 @app.route('/dashboard-epie')
 def dashboard_pie():
     return render_template('dashboard-epie.html')
+'''
 
 # Endpoint para o dashboard com ECharts
 @app.route('/dashboard')
