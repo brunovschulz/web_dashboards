@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Letramento em Dados</title>
+    <link rel="stylesheet" href="../style/index.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+        <div class="header-container">
+            <div class="info">
+                <h1 class="call-to-action">Junte-se à Palestra</h1>
+                <p class="description">
+                    Navegango na Era do conhecimento <br>
+                    O Letramento Crítico em Dados na Educação Básica <br>
+                    Participe e Construa  Futuro da Educação
+                </p>
+            </div>
+            <img src="../assets/Logo_Letramento_SemFundo.png" alt="Logo marca do senhor charles Pimentel">
+        </div>
+        <div class="form">
+            <form id="educacao-form">
+                <div class="container-img">
+                    <a href="https://tecnologianaeducacao.com.br/programacao.html">
+                        <img class="img-event" src="../assets/logo-cite 2024.png" alt="logo do evento: Congresso internacional de inovação na Educação" >      
+
+                    </a>
+                </div>
+    
+                <div class="section">
+                    <label for="uso_dados"><b>Você integra o uso de dados em suas práticas educacionais?</b></label>
+                    <select id="uso_dados" name="uso_dados" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="Sim">Sim, de forma regular.</option>
+                        <option value="Raramente">Sim, de vez em quando.</option>
+                        <option value="Não">Não, ainda não.</option>
+                    </select>
+                </div>
+
+                <div class="section">
+                    <label for="dificuldade"><b>Qual é a maior dificuldade que você encontra ao trabalhar com dados em sala de aula?</b></label>
+                    <select id="dificuldade" name="dificuldade" required>
+                        <option value="" disabled selected>Selecione uma dificuldade</option>
+                        <option value="Falta recursos">Falta de recursos e ferramentas.</option>
+                        <option value="Formação insuficiente">Considero minha formação insuficiente.</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="section">
+                    <label for="tema_relevante"><b>Qual desses temas você considera mais relevante para ensinar letramento de dados?</b></label>
+                    <select id="tema_relevante" name="tema_relevante" required>
+                        <option value="" disabled selected>Selecione um tema</option>
+                        <option value="Inteligência Artificial">Inteligência Artificial.</option>
+                        <option value="Fake News">Fake News e Desinformação.</option>
+                        <option value="Privacidade Dados">Privacidade de Dados e Redes Sociais.</option>
+                    </select>
+                </div>
+               
+
+                <div id="error-message" style="color: red; display: none;">Por favor, preencha todos os campos antes de enviar.</div>
+                <div class="btn-container">
+                    <button class="bnt" type="button" onclick="window.location.href='http://localhost:3000/info';"><b>Enviar</b></button>
+                </div>
+
+            </form>
+        </div>
+        </div>
+    </main>
+    <script src="../script/form.js" href=""></script>
+</body>
+</html>
