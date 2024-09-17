@@ -168,17 +168,17 @@
                 <img src="{{ url_for('static', filename='images/Logo_Letramento_SemFundo.png') }}" alt="QR Code CITE Dados">
             </a>
         </div>
-        <h1>Navegando na Era do Conhecimento</h1>
+        <h1>Navegando na Era do Conhecimento:</h1>
         <h1>O Letramento Crítico em Dados na Educação Básica</h1>
-        <h1>Participe e Construa o Futuro da Educação! 🚀</h1>
+        <h1 style="font-size: 20px;">Participe e Construa o Futuro da Educação! 🚀</h1>
     </div>
 
     <form id="educacao-form">
-        <label for="uso_dados">Você integra o uso de dados em suas práticas educacionais?</label>
+        <label for="uso_dados">Você já integra o uso de dados em suas práticas educacionais?</label>
         <select id="uso_dados" name="uso_dados" required>
             <option value="" disabled selected>Selecione uma opção</option>
             <option value="Sim">Sim, de forma regular.</option>
-            <option value="Raramente">Sim, de vez em quando.</option>
+            <option value="Raramente">Raramente.</option>
             <option value="Não">Não, ainda não.</option>
         </select>
 
@@ -187,15 +187,15 @@
         <textarea id="ferramentas_digitais" name="ferramentas_digitais" rows="3" placeholder="Ex: Google Classroom, Zoom..." required></textarea>
         -->
 
-        <label for="dificuldade">Qual é a maior dificuldade que você encontra ao trabalhar com dados em sala de aula?</label>
+        <label for="dificuldade">Qual é o maior desafio que você encontra ao trabalhar com dados em sala de aula?</label>
         <select id="dificuldade" name="dificuldade" required>
-            <option value="" disabled selected>Selecione uma dificuldade</option>
+            <option value="" disabled selected>Selecione um desafio</option>
             <option value="Falta recursos">Falta de recursos e ferramentas.</option>
             <option value="Formação insuficiente">Considero minha formação insuficiente.</option>
-            <option value="Outros">Outros</option>
+            <option value="Outros">Outros.</option>
         </select>
 
-        <label for="tema_relevante">Qual desses temas você considera mais relevante para ensinar letramento de dados?</label>
+        <label for="tema_relevante">Qual desses temas você considera mais relevante para ensinar Letramento de Dados?</label>
         <select id="tema_relevante" name="tema_relevante" required>
             <option value="" disabled selected>Selecione um tema</option>
             <option value="Inteligência Artificial">Inteligência Artificial.</option>
@@ -220,12 +220,20 @@
 
     <script>
         function enviarDados() {
+
+            const usoDados = document.getElementById('uso_dados').value;
+            const dificuldade = document.getElementById('dificuldade').value;
+            const temaRelevante = document.getElementById('tema_relevante').value;
+
+            if (!usoDados || !dificuldade || !temaRelevante) {
+                alert("Por favor, preencha todas as perguntas antes de enviar.");
+                return; // Impede o envio se algum campo estiver vazio
+            }
+
             const formData = {
-                uso_dados: document.getElementById('uso_dados').value,
-                //ferramentas_digitais: document.getElementById('ferramentas_digitais').value,
-                dificuldade: document.getElementById('dificuldade').value,
-                tema_relevante: document.getElementById('tema_relevante').value,
-                //inovacao_tecnologica: document.getElementById('inovacao_tecnologica').value
+                uso_dados: usoDados,
+                dificuldade:  dificuldade,
+                tema_relevante: temaRelevante,
             };
 
             fetch('/envia', {
