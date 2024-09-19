@@ -229,14 +229,19 @@
                     const temaRelevanteValores = temaRelevanteLabels.map(label => parseFloat(((contagemIncidencias[label])/somaTotalTema*100).toFixed(2)));
 
 
+                    const dificuldadeOrdemDesejada = ['Formação insuficiente', 'Falta recursos', 'Outros'];
 
                     var rawDataDificuldade = data.map(item => item.dificuldade).filter(Boolean);
                     var contagemIncidencias = contarIncidencias(rawDataDificuldade);
 
-                    const dificuldadeLabels = Object.keys(contagemIncidencias);
+                    const dificuldadeLabelsOriginal = Object.keys(contagemIncidencias);
                     const dificuldadeValoresOriginal = Object.values(contagemIncidencias);
 
                     const somaTotalDificuldade = dificuldadeValoresOriginal.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
+
+                    const dificuldadeLabels = dificuldadeOrdemDesejada.filter(label => dificuldadeLabelsOriginal.includes(label));
+                    console.log(dificuldadeLabels)
+
                     const dificuldadeValores = dificuldadeLabels.map(label => parseFloat(((contagemIncidencias[label])/somaTotalDificuldade*100).toFixed(2)));
 
 
